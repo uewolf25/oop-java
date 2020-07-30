@@ -1,0 +1,7 @@
+# Unnecessary files
+.DS_Store*
+.vscode*
+
+# astah
+*.asta
+
