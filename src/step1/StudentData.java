@@ -1,6 +1,7 @@
 package step1;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -65,20 +66,14 @@ public class StudentData {
 
 	/**
 	 * 問題番号の最大値のGetter
+	 * 問題番号をcsvData型のリストから抜き出し、比較して最大値を探索する
 	 * @return 問題番号の最大値を返す
 	 */
 	public String getMaxQuestionNumber(){
-		Integer maxValue = 1;
-		for (Integer i = 0; i < this.getMaxIndex(); i++) {
-			Integer listValue = Integer.valueOf(this.studentsList.get(i).getQuestionNumber());
-			if(maxValue < listValue)
-				maxValue = listValue;
-		}
-		return Integer.toString(maxValue);
-
-		// return this.studentsList.stream()
-		// 					.max(Comparator.comparing(CsvDataField::getQuestionNumber))
-		// 					.orElseThrow(NoSuchElementException::new);
+		return this.studentsList.stream()
+			.map(csvData -> csvData.getQuestionNumber())
+			.max(Comparator.comparing(item -> item))
+			.get();
 	}
 
 
