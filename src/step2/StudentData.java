@@ -1,4 +1,4 @@
-package step1;
+package step2;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -105,5 +105,26 @@ public class StudentData {
 		return this.studentsList.stream()
 			.filter(csvData -> csvData.getQuestionNumber().equals(qNumber))
 			.count();
+	}
+
+	/**
+	 * 出現した得点を出力するためのメソッド
+	 * @return 存在する点数をcsv形式で返す。
+	 */
+	public String getAllPoint() {
+		List<String> printAppearPointList = new ArrayList<>();
+		this.studentsList.stream()
+			.map(CsvDataField::getPoint)
+			.forEach(point -> printAppearPointList.add(point));
+		
+		String pointNumber = 
+			printAppearPointList.stream()
+				.distinct()
+				.sorted(Comparator.comparing(point -> point))
+				.map(element -> String.format("%s", element))
+				.collect(Collectors.joining(","));
+
+		return pointNumber;
+			
 	}
 }

@@ -1,6 +1,6 @@
 package abstractClass;
 
-import step1.Calculation;
+import step2.Calculation;
 
 /**
  * 計算を行う抽象クラス。
