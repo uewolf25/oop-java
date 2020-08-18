@@ -1,6 +1,6 @@
 package abstractClass;
 
-import step1.FileClass;
+import step2.FileClass;
 
 /**
  * ファイルの読み書きを行う抽象クラス。
@@ -13,6 +13,6 @@ public abstract class AbstractFileClass {
 
 	protected abstract void reader();
 
-	protected abstract void writer();
+	protected abstract void writer(String str);
 
 }
